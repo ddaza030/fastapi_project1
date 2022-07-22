@@ -1,9 +1,8 @@
 from pydantic import BaseModel
-from fastapi import UploadFile
-from typing import Optional
+from typing import Optional, Union
 
 
 class BaseResponse(BaseModel):
-    data: bytes
+    data: Union[bytes, None]
     code: int
     message: str
