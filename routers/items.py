@@ -1,5 +1,5 @@
 from fastapi import APIRouter, File
-from fastapi import Body, UploadFile
+from fastapi import Body, UploadFile, Request
 import pandas as pd
 
 
@@ -13,28 +13,25 @@ router = APIRouter(
 
 
 @router.put('/registros/anadir', tags=["users"], response_model=BaseResponse)
-async def actualizar(registros: UploadFile = File(...)):
+async def actualizar(request: Request, registros: UploadFile = File(...)):
+    # TODO: manera correcta de pasar la respuesta o de mostrar errores
     try:
         response = {
-            'data': map_animal(registros).read(),
+            'data': map_animal(registros, request).read(),
             'message': 'eso es todo',
             'code': 200
         }
-        print('bien')
     except KeyError as e:
         response = {
             'message': 'las columnas de las tablas no corresponden',
             'code': 400,
             'data': None
         }
-        print('szs')
     except Exception as e:
         response = {
             'message': repr(e),
             'code': 400,
             'data': None
         }
-        print(e)
     finally:
-        print(response)
         return response
