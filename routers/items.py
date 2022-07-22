@@ -15,7 +15,7 @@ router = APIRouter(
 async def actualizar(tabla: Tabla = Body(...)):
     try:
         response = {
-            'data': map_animal(tabla),
+            'data': map_animal(tabla['registros']),
             'message': 'eso es todo',
             'code': 200
         }

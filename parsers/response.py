@@ -4,6 +4,6 @@ from typing import Optional
 
 
 class BaseResponse(BaseModel):
-    data: Optional[UploadFile] = None
+    data: bytes
     code: int
     message: str
