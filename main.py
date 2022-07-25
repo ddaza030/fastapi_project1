@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 from routers import items
-from utils.telegram.mibot import MiBot
-import telegram_send
 import uvicorn
+
+from utils.telegram.mibot import MiBot
+
 
 app = FastAPI()
 
