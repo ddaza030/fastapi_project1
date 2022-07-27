@@ -3,6 +3,6 @@ from typing import Optional, Union
 
 
 class BaseResponse(BaseModel):
-    data: Union[bytes, None]
-    code: int
+    data: str
+    status: bool
     message: str
